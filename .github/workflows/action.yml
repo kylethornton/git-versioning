@@ -7,7 +7,6 @@ on:
     branches:
       - main
       - release-candidate
-
 env:
   RELEASE_BRANCHES: main,release-candidate
   DEFAULT_BRANCH: release-candidate
@@ -16,6 +15,16 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
+    - name: Extract branch name
+      shell: bash
+      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+      id: extract_branch
+
+    - name: Check if prerelease
+      if: steps.extract_branch.outputs.branch == 'release-candidate'
+      env:
+        PRERELEASE: true
+
     - uses: actions/checkout@v3
       with:
         ref: ${{ github.sha }}
