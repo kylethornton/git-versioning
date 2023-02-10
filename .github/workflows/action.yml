@@ -23,7 +23,7 @@ jobs:
 
     - name: Check if prerelease
       run: |
-        echo github.ref
+        echo $${{ github.ref }}
         echo "PRERELEASE=true" >> $GITHUB_ENV
       if: $${{ github.ref == 'refs/heads/release-candidate' }}
 
