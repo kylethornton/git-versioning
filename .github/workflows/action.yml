@@ -14,7 +14,6 @@ env:
 jobs:
   build:
     runs-on: ubuntu-22.04
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -24,8 +23,9 @@ jobs:
 
     - name: Check if prerelease
       run: |
+        echo ${{ github.ref }}
         echo "PRERELEASE=true" >> $GITHUB_ENV
-      if: $${{ github.ref == 'refs/heads/release-candidate' }}
+      if: github.ref == 'release-candidate'
 
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.55.0 # Don't use @master unless you're happy to test the latest version
