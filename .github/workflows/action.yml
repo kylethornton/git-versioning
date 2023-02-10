@@ -7,6 +7,11 @@ on:
     branches:
       - main
       - release-candidate
+
+env:
+  RELEASE_BRANCHES: main,release-candidate
+  DEFAULT_BRANCH: release-candidate
+
 jobs:
   build:
     runs-on: ubuntu-22.04
