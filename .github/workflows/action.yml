@@ -6,6 +6,7 @@ on:
       - closed
     branches:
       - main
+      - release-candidate
 jobs:
   build:
     runs-on: ubuntu-22.04
