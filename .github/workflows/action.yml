@@ -23,9 +23,9 @@ jobs:
 
     - name: Check if prerelease
       run: |
-        echo $${{ github.event.ref }}
+        echo ${{ github.event.ref }}
         echo "PRERELEASE=true" >> $GITHUB_ENV
-      if: $${{ github.event.ref == 'refs/heads/release-candidate' }}
+      if: ${{ github.event.ref == 'refs/heads/release-candidate' }}
 
     - name: Bump version and push tag
       uses: anothrNick/github-tag-action@1.55.0 # Don't use @master unless you're happy to test the latest version
