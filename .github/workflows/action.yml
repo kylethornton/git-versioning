@@ -6,7 +6,7 @@ on:
       - closed
     branches:
       - main
-      - release-candidate
+      - release-candidate-v0.3
 env:
   RELEASE_BRANCHES: main,release-candidate
   DEFAULT_BRANCH: release-candidate
