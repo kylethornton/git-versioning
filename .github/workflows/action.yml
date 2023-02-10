@@ -15,16 +15,12 @@ jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
-    - name: Extract branch name
-      shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-      id: extract_branch
 
     - name: Check if prerelease
-      uses: .
-      if: steps.extract_branch.outputs.branch == 'release-candidate'
+      uses: ./
       env:
         PRERELEASE: true
+      if: $${{ github.ref == 'refs/heads/release-candidate' }}
 
     - uses: actions/checkout@v3
       with:
