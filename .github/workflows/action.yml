@@ -21,6 +21,7 @@ jobs:
       id: extract_branch
 
     - name: Check if prerelease
+      uses: .
       if: steps.extract_branch.outputs.branch == 'release-candidate'
       env:
         PRERELEASE: true
